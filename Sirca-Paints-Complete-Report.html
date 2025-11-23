@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirca Paints India Limited - Investment Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #eef2f9; color: #1e293b; font-family: 'Inter', sans-serif; }
+        .report-banner { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); margin-bottom: 2rem; }
+        .report-title { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .metric-box { background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; text-align: center; }
+        .metric-label { font-size: 0.75rem; opacity: 0.9; margin-bottom: 0.5rem; }
+        .metric-value { font-size: 1.5rem; font-weight: 700; }
+        .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: white; border-radius: 12px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        .card-title { font-size: 1.1rem; font-weight: 600; color: #7c3aed; margin-bottom: 0.5rem; }
+        .card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1000; overflow-y: auto; padding: 2rem 0; }
+        .modal-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
+        .modal-content { background: white; border-radius: 12px; padding: 2rem; max-width: 900px; width: 90%; position: relative; margin-top: 2rem; margin-bottom: 2rem; }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; font-size: 2rem; cursor: pointer; color: #666; line-height: 1; }
+        .modal-section-title { font-size: 1.5rem; font-weight: 700; color: #7c3aed; margin-bottom: 1rem; margin-top: 1rem; }
+        .sources-section { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <div class="report-banner">
+            <div class="report-title">Sirca Paints India Limited</div>
+            <p style="opacity: 0.9;">NSE: SIRCA | Premium Wood Coatings & Specialty Paints</p>
+            <p style="opacity: 0.8; font-size: 0.9rem;">Investment Analysis Report | Date: 22-November-2025</p>
+            <div class="metrics-grid">
+                <div class="metric-box"><div class="metric-label">Current Price</div><div class="metric-value">₹502</div></div>
+                <div class="metric-box"><div class="metric-label">Market Cap</div><div class="metric-value">₹2,755 Cr</div></div>
+                <div class="metric-box"><div class="metric-label">P/E Ratio</div><div class="metric-value">51.9x</div></div>
+                <div class="metric-box"><div class="metric-label">Q2 Revenue</div><div class="metric-value">₹131 Cr</div></div>
+                <div class="metric-box"><div class="metric-label">Revenue Growth</div><div class="metric-value">24% YoY</div></div>
+                <div class="metric-box"><div class="metric-label">EBITDA Margin</div><div class="metric-value">20.9%</div></div>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div class="card" onclick="openModal('modal1')"><div class="card-icon">🎨</div><div class="card-title">Sector & Ecosystem</div><p class="text-sm text-gray-600">Wood coatings market, premium segment</p></div>
+            <div class="card" onclick="openModal('modal2')"><div class="card-icon">🏢</div><div class="card-title">Company Overview</div><p class="text-sm text-gray-600">Italian technology, India expertise</p></div>
+            <div class="card" onclick="openModal('modal3')"><div class="card-icon">🚀</div><div class="card-title">MACHINE Analysis</div><p class="text-sm text-gray-600">Premium positioning & growth drivers</p></div>
+            <div class="card" onclick="openModal('modal4')"><div class="card-icon">📊</div><div class="card-title">Four Cylinder Summary</div><p class="text-sm text-gray-600">Growth, margins, expansion, innovation</p></div>
+            <div class="card" onclick="openModal('modal5')"><div class="card-icon">🎯</div><div class="card-title">Peer Comparison</div><p class="text-sm text-gray-600">vs Asian Paints, Berger, others</p></div>
+            <div class="card" onclick="openModal('modal6')"><div class="card-icon">💰</div><div class="card-title">Financial Performance</div><p class="text-sm text-gray-600">Q2 FY26 strong results</p></div>
+            <div class="card" onclick="openModal('modal7')"><div class="card-icon">🔧</div><div class="card-title">Business Segments Detailed</div><p class="text-sm text-gray-600">Wood, Unico, Oikos brands</p></div>
+            <div class="card" onclick="openModal('modal8')"><div class="card-icon">📈</div><div class="card-title">Technical Analysis</div><p class="text-sm text-gray-600">52W High ₹513, Near ATH</p></div>
+            <div class="card" onclick="openModal('modal9')"><div class="card-icon">📰</div><div class="card-title">News & Catalysts</div><p class="text-sm text-gray-600">Italy partnership extended to 2041</p></div>
+            <div class="card" onclick="openModal('modal10')"><div class="card-icon">🎤</div><div class="card-title">Conference Call Insights</div><p class="text-sm text-gray-600">Management FY30 vision</p></div>
+            <div class="card" onclick="openModal('modal11')"><div class="card-icon">🔍</div><div class="card-title">Forensic Analysis</div><p class="text-sm text-gray-600">Quality metrics assessment</p></div>
+            <div class="card" onclick="openModal('modal12')"><div class="card-icon">💎</div><div class="card-title">Valuation & Recommendation</div><p class="text-sm text-gray-600">BUY on dips | Target ₹550-650</p></div>
+        </div>
+
+        <!-- MODAL 1: Sector Analysis -->
+        <div id="modal1" class="modal-overlay" onclick="if(event.target===this)closeModal('modal1')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal1')">&times;</span>
+                <h2 class="modal-section-title">🎨 Sector, Value Chain & Ecosystem</h2>
+                <h3 class="font-bold text-lg mt-4">Indian Paints & Coatings Market</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Market Size:</strong> ~₹70,000 Cr industry, growing 12-14% CAGR</li>
+                    <li><strong>Decorative Segment:</strong> 75% of market (Asian Paints, Berger dominate)</li>
+                    <li><strong>Wood Coatings:</strong> Niche premium segment (~₹5,000-6,000 Cr)</li>
+                    <li><strong>Key Drivers:</strong> Real estate growth, premiumization, designer furniture boom</li>
+                    <li><strong>Per Capita Consumption:</strong> 4kg vs 20kg+ in developed markets (5x upside)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Wood Coatings Segment Dynamics</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Premium Focus:</strong> PU (Polyurethane) coatings for luxury furniture, modular kitchens</li>
+                    <li><strong>Key Customers:</strong> Interior designers, furniture manufacturers, carpenters, retail</li>
+                    <li><strong>Technology Critical:</strong> Italian/European tech for superior finish quality</li>
+                    <li><strong>Margin Profile:</strong> 20-25% EBITDA (vs 15-18% decorative paints)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Sirca's Market Position</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Leadership:</strong> Top 3 in premium wood coatings (with Asian Paints, ICA)</li>
+                    <li><strong>Italian Edge:</strong> Exclusive partnership with Sirca S.p.A Italy (extended to 2041)</li>
+                    <li><strong>Brand Portfolio:</strong> Sirca (super premium), Unico (mass premium), Oikos (wall textures)</li>
+                    <li><strong>Network:</strong> Pan-India presence, strong in South & West, expanding North/East</li>
+                </ul>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Industry reports, company website, market analysis</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 2: Company Overview -->
+        <div id="modal2" class="modal-overlay" onclick="if(event.target===this)closeModal('modal2')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal2')">&times;</span>
+                <h2 class="modal-section-title">🏢 Company Overview</h2>
+                <h3 class="font-bold text-lg mt-4">Sirca Paints Profile</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Founded:</strong> 2006 | <strong>Listed:</strong> July 2019 (IPO)</li>
+                    <li><strong>Promoters:</strong> Italian parent Sirca S.p.A + Indian management (72.4% holding)</li>
+                    <li><strong>Market Cap:</strong> ₹2,755 Cr | <strong>Float:</strong> ₹760 Cr (27.6%)</li>
+                    <li><strong>Manufacturing:</strong> State-of-the-art plants with Italian technology transfer</li>
+                    <li><strong>Q2 FY26 Revenue:</strong> ₹131 Cr (+24% YoY)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Brand Portfolio (Q2 FY26)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
+                    <div style="background: #C4B5FD; padding: 0.75rem; border-radius: 6px;"><p class="font-semibold text-sm">Sirca (Premium)</p><p class="text-xs mt-1">• Italian luxury finishes</p><p class="text-xs">• PU wood coatings leader</p></div>
+                    <div style="background: #DBEAFE; padding: 0.75rem; border-radius: 6px;"><p class="font-semibold text-sm">Unico (Mass Premium)</p><p class="text-xs mt-1">• Weekend warrior segment</p><p class="text-xs">• Retail & carpenter focus</p></div>
+                    <div style="background: #FEF3C7; padding: 0.75rem; border-radius: 6px;"><p class="font-semibold text-sm">Oikos (Wall Textures)</p><p class="text-xs mt-1">• Premium interior walls</p><p class="text-xs">• Designer segment</p></div>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Q2 FY26 Highlights</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Revenue:</strong> ₹131 Cr (+24% YoY)</li>
+                    <li><strong>EBITDA:</strong> ₹27.4 Cr (20.9% margin vs 18.0% last year)</li>
+                    <li><strong>PAT:</strong> ₹18.1 Cr (+36% YoY)</li>
+                    <li><strong>EPS:</strong> ₹3.24 (vs ₹2.42 previous year)</li>
+                    <li><strong>Italy Partnership:</strong> Extended to 2041 (from 2030)</li>
+                </ul>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Q2 FY26 results, NSE data</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 3: MACHINE Analysis -->
+        <div id="modal3" class="modal-overlay" onclick="if(event.target===this)closeModal('modal3')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal3')">&times;</span>
+                <h2 class="modal-section-title">🚀 MACHINE Framework Analysis</h2>
+                <div style="background: #C4B5FD; padding: 1rem; border-radius: 8px; margin: 1rem 0;"><h3 class="font-bold text-purple-700">M - Mega Tailwinds</h3><p class="text-sm mt-1">Real estate boom, premiumization trend, low per capita paint consumption (4kg vs 20kg+ developed), rising disposable incomes driving luxury furniture & modular kitchen demand</p></div>
+                <div style="background: #BBF7D0; padding: 1rem; border-radius: 8px; margin: 1rem 0;"><h3 class="font-bold text-green-700">A - Action/Stock Movement</h3><p class="text-sm mt-1">Stock at ₹502, near 52W high of ₹513.45. YTD return: +118% (₹230 → ₹502). Market cap ₹2,755 Cr. Strong momentum on earnings beat</p></div>
+                <div style="background: #DBEAFE; padding: 1rem; border-radius: 8px; margin: 1rem 0;"><h3 class="font-bold text-blue-700">C - Competitive Moat</h3><ul class="text-sm mt-1 space-y-1"><li>✓ Exclusive Italian technology partnership (till 2041)</li><li>✓ Top 3 player in premium wood coatings</li><li>✓ Superior product quality vs local players</li><li>✓ Strong designer & architect network</li></ul></div>
+                <div style="background: #FEF3C7; padding: 1rem; border-radius: 8px; margin: 1rem 0;"><h3 class="font-bold text-yellow-700">H - High Returns on Capital</h3><p class="text-sm mt-1">ROE ~27%, ROCE ~24%. EBITDA margins 20.9% (expanding). Asset-light model, strong cash generation</p></div>
+                <div style="background: #FED7AA; padding: 1rem; border-radius: 8px; margin: 1rem 0;"><h3 class="font-bold text-orange-700">I - Improvement Trends</h3><p class="text-sm mt-1">Q2: 24% revenue growth, 36% profit growth, +291 bps margin expansion. Consistent 20%+ growth for 3 years. Guidance: 35-40% CAGR to ₹1,000 Cr by FY30</p></div>
+                <div style="background: #BBF7D0; padding: 1rem; border-radius: 8px; margin: 1rem 0;"><h3 class="font-bold text-green-700">N - New Initiatives</h3><p class="text-sm mt-1">Water-based eco-friendly coatings, Tier 2/3/4 city expansion, digital sales push, new product launches (mass-premium segment), export opportunities</p></div>
+                <div style="background: #E0E7FF; padding: 1rem; border-radius: 8px; margin: 1rem 0;"><h3 class="font-bold text-indigo-700">E - Execution Track Record</h3><p class="text-sm mt-1">Strong execution: 24% growth delivered, margins >20% sustained, Italy partnership extended, network expansion on track. Management credibility high</p></div>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Earnings analysis, strategic review</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 4: Four Cylinder Summary -->
+        <div id="modal4" class="modal-overlay" onclick="if(event.target===this)closeModal('modal4')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal4')">&times;</span>
+                <h2 class="modal-section-title">📊 Four Cylinder Summary</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div style="background: #C4B5FD; padding: 1rem; border-radius: 8px;"><h3 class="font-bold text-purple-700">Cylinder 1: Revenue Surge</h3><ul class="text-sm mt-2 space-y-1"><li>Q2: ₹131 Cr (+24% YoY)</li><li>H1: ₹245 Cr (+23% YoY)</li><li>FY26 target: ₹540-550 Cr</li><li>FY30 vision: ₹1,000 Cr (35-40% CAGR)</li></ul></div>
+                    <div style="background: #BBF7D0; padding: 1rem; border-radius: 8px;"><h3 class="font-bold text-green-700">Cylinder 2: Margin Expansion</h3><ul class="text-sm mt-2 space-y-1"><li>Q2: 20.9% EBITDA (+291 bps YoY)</li><li>Product mix improving</li><li>Operating leverage playing out</li><li>Target: 20-22% sustainable</li></ul></div>
+                    <div style="background: #DBEAFE; padding: 1rem; border-radius: 8px;"><h3 class="font-bold text-blue-700">Cylinder 3: Network Expansion</h3><ul class="text-sm mt-2 space-y-1"><li>Pan-India presence achieved</li><li>Strong South & West India</li><li>North & East ramp-up ongoing</li><li>Tier 2/3/4 focus accelerating</li></ul></div>
+                    <div style="background: #FEF3C7; padding: 1rem; border-radius: 8px;"><h3 class="font-bold text-yellow-700">Cylinder 4: Innovation Pipeline</h3><ul class="text-sm mt-2 space-y-1"><li>Water-based eco coatings</li><li>Mass-premium product launches</li><li>Designer collaboration platform</li><li>Digital sales infrastructure</li></ul></div>
+                </div>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Q2 FY26 earnings, management commentary</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 5: Peer Comparison -->
+        <div id="modal5" class="modal-overlay" onclick="if(event.target===this)closeModal('modal5')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal5')">&times;</span>
+                <h2 class="modal-section-title">🎯 Peer Comparison</h2>
+                <div style="overflow-x: auto; margin: 1rem 0;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                        <tr style="background: #7c3aed; color: white;"><th style="padding: 0.75rem; border: 1px solid #ddd;">Company</th><th style="padding: 0.75rem; border: 1px solid #ddd;">Market Cap</th><th style="padding: 0.75rem; border: 1px solid #ddd;">P/E</th><th style="padding: 0.75rem; border: 1px solid #ddd;">EBITDA %</th><th style="padding: 0.75rem; border: 1px solid #ddd;">Growth</th></tr>
+                        <tr><td style="padding: 0.75rem; border: 1px solid #ddd;"><strong>Sirca Paints</strong></td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">₹2,755 Cr</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">51.9x</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">20.9%</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center; color: green;">24%</td></tr>
+                        <tr style="background: #f5f5f5;"><td style="padding: 0.75rem; border: 1px solid #ddd;">Asian Paints</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">₹2.66 L Cr</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">55x</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">18%</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">8-10%</td></tr>
+                        <tr><td style="padding: 0.75rem; border: 1px solid #ddd;">Berger Paints</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">₹57,000 Cr</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">48x</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">16%</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">12-14%</td></tr>
+                        <tr style="background: #f5f5f5;"><td style="padding: 0.75rem; border: 1px solid #ddd;">Kansai Nerolac</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">₹26,000 Cr</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">42x</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">14%</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">10%</td></tr>
+                        <tr><td style="padding: 0.75rem; border: 1px solid #ddd;">Indigo Paints</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">₹4,500 Cr</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">65x</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">17%</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">18-20%</td></tr>
+                        <tr style="background: #f5f5f5;"><td style="padding: 0.75rem; border: 1px solid #ddd;">Akzo Nobel India</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">₹8,500 Cr</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">38x</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">12%</td><td style="padding: 0.75rem; border: 1px solid #ddd; text-align: center;">8%</td></tr>
+                    </table>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Key Takeaways</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Sirca Advantage:</strong> Highest margins (20.9%), fastest growth (24%), premium positioning</li>
+                    <li><strong>Niche Focus:</strong> Wood coatings vs broad decorative (Asian/Berger) = better margins</li>
+                    <li><strong>Size Disadvantage:</strong> Much smaller scale (₹2,755 Cr vs ₹2.66L Cr Asian Paints)</li>
+                    <li><strong>Valuation:</strong> Mid-range PE (51.9x) justified by growth + margins</li>
+                    <li><strong>Similar to Indigo:</strong> High-growth challenger with premium products</li>
+                </ul>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">NSE data, Screener.in, industry reports</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 6: Financial Performance -->
+        <div id="modal6" class="modal-overlay" onclick="if(event.target===this)closeModal('modal6')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal6')">&times;</span>
+                <h2 class="modal-section-title">💰 Financial Performance (Q2 FY26)</h2>
+                <div style="overflow-x: auto; margin: 1rem 0;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                        <tr style="background: #7c3aed; color: white;"><th style="padding: 0.5rem; border: 1px solid #ddd;">Metric</th><th style="padding: 0.5rem; border: 1px solid #ddd;">Q2 FY26</th><th style="padding: 0.5rem; border: 1px solid #ddd;">Q2 FY25</th><th style="padding: 0.5rem; border: 1px solid #ddd;">Growth</th></tr>
+                        <tr><td style="padding: 0.5rem; border: 1px solid #ddd;">Revenue</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">₹131 Cr</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">₹105 Cr</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center; color: green;"><strong>+24%</strong></td></tr>
+                        <tr style="background: #f5f5f5;"><td style="padding: 0.5rem; border: 1px solid #ddd;">EBITDA</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">₹27.4 Cr</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">₹19 Cr</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center; color: green;"><strong>+44%</strong></td></tr>
+                        <tr><td style="padding: 0.5rem; border: 1px solid #ddd;">EBITDA Margin</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">20.9%</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">18.0%</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center; color: green;"><strong>+291 bps</strong></td></tr>
+                        <tr style="background: #f5f5f5;"><td style="padding: 0.5rem; border: 1px solid #ddd;">PAT</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">₹18.1 Cr</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">₹13.3 Cr</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center; color: green;"><strong>+36%</strong></td></tr>
+                        <tr><td style="padding: 0.5rem; border: 1px solid #ddd;">PAT Margin</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">13.8%</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">12.7%</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center; color: green;"><strong>+110 bps</strong></td></tr>
+                        <tr style="background: #f5f5f5;"><td style="padding: 0.5rem; border: 1px solid #ddd;">EPS (₹)</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">3.24</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center;">2.42</td><td style="padding: 0.5rem; border: 1px solid #ddd; text-align: center; color: green;"><strong>+34%</strong></td></tr>
+                    </table>
+                </div>
+                <h3 class="font-bold text-lg mt-4">H1 FY26 Performance</h3>
+                <ul class="list-disc list-inside space-y-1 mt-2 text-sm">
+                    <li>Revenue: ₹245 Cr (+23% YoY)</li>
+                    <li>EBITDA: ₹50.5 Cr (20.6% margin)</li>
+                    <li>PAT: ₹33.5 Cr (+34% YoY)</li>
+                    <li>EPS: ₹6.01 (annualized ₹12+ run-rate)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Key Observations</h3>
+                <ul class="list-disc list-inside space-y-1 mt-2 text-sm">
+                    <li>✓ Strong topline momentum (24% growth sustained)</li>
+                    <li>✓ Margin expansion (+291 bps) from product mix & operating leverage</li>
+                    <li>✓ Bottom-line growing faster than topline (36% vs 24%)</li>
+                    <li>✓ Consistent track record: 3 years of 20%+ growth</li>
+                </ul>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Q2 FY26 results announcement</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 7: Business Segments Detailed -->
+        <div id="modal7" class="modal-overlay" onclick="if(event.target===this)closeModal('modal7')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal7')">&times;</span>
+                <h2 class="modal-section-title">🔧 Business Segments Detailed</h2>
+                <h3 class="font-bold text-lg mt-4">Sirca Brand (Luxury Wood Coatings)</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Positioning:</strong> Super-premium Italian wood finishes</li>
+                    <li><strong>Technology:</strong> PU (Polyurethane) coatings with Italian formulations</li>
+                    <li><strong>Target:</strong> Luxury furniture manufacturers, high-end interior designers</li>
+                    <li><strong>Products:</strong> Wood stains, lacquers, clear coats, specialty finishes</li>
+                    <li><strong>USP:</strong> Superior durability, European aesthetic, eco-friendly options</li>
+                    <li><strong>Margin Profile:</strong> Highest margins (22-25% EBITDA)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Unico Brand (Mass Premium)</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Positioning:</strong> Affordable premium for weekend DIY & small carpenters</li>
+                    <li><strong>Channel:</strong> Retail paint stores, hardware shops, carpenter networks</li>
+                    <li><strong>Products:</strong> Ready-to-use wood finishes, water-based coatings</li>
+                    <li><strong>Growth Driver:</strong> Democratizing premium finishes for mass market</li>
+                    <li><strong>Margin Profile:</strong> 18-20% EBITDA (volume play)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Oikos Brand (Premium Wall Textures)</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Positioning:</strong> Decorative wall coatings & textures</li>
+                    <li><strong>Target:</strong> Interior designers, architects, premium homes</li>
+                    <li><strong>Products:</strong> Textured paints, metallic finishes, designer effects</li>
+                    <li><strong>Opportunity:</strong> Expanding beyond wood into wall segment</li>
+                    <li><strong>Growth Stage:</strong> Newer vertical with high potential</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Manufacturing & Distribution</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Plants:</strong> State-of-the-art manufacturing with Italian tech</li>
+                    <li><strong>Distribution:</strong> Pan-India network via dealers & distributors</li>
+                    <li><strong>Service:</strong> Technical support & training for applicators</li>
+                    <li><strong>Expansion:</strong> Tier 2/3/4 cities (low penetration currently)</li>
+                </ul>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Company website, product portfolio analysis</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 8: Technical Analysis -->
+        <div id="modal8" class="modal-overlay" onclick="if(event.target===this)closeModal('modal8')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal8')">&times;</span>
+                <h2 class="modal-section-title">📈 Technical Analysis</h2>
+                <div style="background: #C4B5FD; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center">
+                        <div><p class="text-xs opacity-80">Current Price</p><p class="font-bold">₹502</p></div>
+                        <div><p class="text-xs opacity-80" style="color: #10b981;"><strong>52W High</strong></p><p class="font-bold">₹513.45</p><p class="text-xs text-green-700">+2.3% to ATH</p></div>
+                        <div><p class="text-xs opacity-80" style="color: #ef4444;"><strong>52W Low</strong></p><p class="font-bold">₹230.69</p><p class="text-xs">Up 117% from low</p></div>
+                        <div><p class="text-xs opacity-80">52W Range</p><p class="font-bold">₹282.76</p><p class="text-xs">122% spread</p></div>
+                        <div><p class="text-xs opacity-80">YTD Return</p><p class="font-bold text-green-600">+118%</p><p class="text-xs">Exceptional rally</p></div>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Support & Resistance Levels</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Immediate Support:</strong> ₹480-485 (recent consolidation)</li>
+                    <li><strong>Strong Support:</strong> ₹450 (psychological), ₹400-420 (major support zone)</li>
+                    <li><strong>Resistance:</strong> ₹513.45 (52W high/ATH), ₹520-525 (breakout level)</li>
+                    <li><strong>Current Position:</strong> Near all-time highs, strong momentum</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Trend Analysis</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Long-term:</strong> Exceptional uptrend (₹230 → ₹502 in 12 months = 118% gain)</li>
+                    <li><strong>Medium-term:</strong> Consolidating near highs post-earnings</li>
+                    <li><strong>Short-term:</strong> Bullish, RSI 60-65 (room to run)</li>
+                    <li><strong>Volume:</strong> Above-average on earnings day, healthy accumulation</li>
+                    <li><strong>Pattern:</strong> Higher highs, higher lows (classic uptrend)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Price Targets</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0;">
+                    <tr style="background: #7c3aed; color: white;">
+                        <th style="padding: 0.75rem; border: 1px solid #ddd;">Timeframe</th>
+                        <th style="padding: 0.75rem; border: 1px solid #ddd;">Target</th>
+                        <th style="padding: 0.75rem; border: 1px solid #ddd;">Upside</th>
+                    </tr>
+                    <tr><td style="padding: 0.75rem; border: 1px solid #ddd;"><strong>3-6 Months</strong></td><td style="padding: 0.75rem; border: 1px solid #ddd;">₹550-580</td><td style="padding: 0.75rem; border: 1px solid #ddd; color: green;">+10-16%</td></tr>
+                    <tr style="background: #f5f5f5;"><td style="padding: 0.75rem; border: 1px solid #ddd;"><strong>6-12 Months</strong></td><td style="padding: 0.75rem; border: 1px solid #ddd;">₹620-650</td><td style="padding: 0.75rem; border: 1px solid #ddd; color: green;">+24-30%</td></tr>
+                    <tr><td style="padding: 0.75rem; border: 1px solid #ddd;"><strong>12-18 Months</strong></td><td style="padding: 0.75rem; border: 1px solid #ddd;">₹700+</td><td style="padding: 0.75rem; border: 1px solid #ddd; color: green;">+40%+</td></tr>
+                </table>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">NSE data, TradingView chart analysis</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 9: News & Catalysts -->
+        <div id="modal9" class="modal-overlay" onclick="if(event.target===this)closeModal('modal9')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal9')">&times;</span>
+                <h2 class="modal-section-title">📰 News & Future Catalysts</h2>
+                <h3 class="font-bold text-lg mt-4">Recent Major Developments (Nov 2025)</h3>
+                <div style="background: #BBF7D0; padding: 0.75rem; border-radius: 6px; margin: 0.5rem 0;">
+                    <p class="font-semibold text-sm">Italy Partnership Extended to 2041 (Nov 2025)</p>
+                    <p class="text-xs">Technology collaboration with Sirca S.p.A Italy extended 11 years beyond original 2030 term - validates long-term strategy</p>
+                </div>
+                <div style="background: #C4B5FD; padding: 0.75rem; border-radius: 6px; margin: 0.5rem 0;">
+                    <p class="font-semibold text-sm">Q2 FY26 Strong Earnings Beat (Nov 2025)</p>
+                    <p class="text-xs">24% revenue growth, 36% profit growth, 20.9% margins beat estimates - stock near all-time high</p>
+                </div>
+                <div style="background: #DBEAFE; padding: 0.75rem; border-radius: 6px; margin: 0.5rem 0;">
+                    <p class="font-semibold text-sm">Bonus Issue 1:1 (May 2023)</p>
+                    <p class="text-xs">Shareholder-friendly corporate action demonstrating confidence - share count doubled, liquidity improved</p>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Short-Term Catalysts (3-6 Months)</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Q3 FY26 Results (Feb 2026):</strong> Expected to show continued 20%+ growth momentum</li>
+                    <li><strong>Product Launches:</strong> New water-based eco-friendly range in pipeline</li>
+                    <li><strong>Network Expansion:</strong> Entry into 50+ new Tier 3/4 towns</li>
+                    <li><strong>Export Push:</strong> Potential orders from Middle East & Southeast Asia</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Long-Term Opportunities (12-24 Months)</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Real Estate Recovery:</strong> Housing boom drives modular kitchen & premium furniture demand</li>
+                    <li><strong>Premiumization Trend:</strong> Indian consumers upgrading to luxury finishes</li>
+                    <li><strong>Capacity Expansion:</strong> New manufacturing lines for Unico mass-premium segment</li>
+                    <li><strong>Institutional Orders:</strong> Hospitality sector (hotels, resorts) recovery post-pandemic</li>
+                    <li><strong>FY30 Vision:</strong> ₹1,000 Cr revenue target (35-40% CAGR from current ₹500 Cr)</li>
+                </ul>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Company announcements, media reports</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 10: Conference Call Insights -->
+        <div id="modal10" class="modal-overlay" onclick="if(event.target===this)closeModal('modal10')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal10')">&times;</span>
+                <h2 class="modal-section-title">🎤 Conference Call Insights</h2>
+                <h3 class="font-bold text-lg mt-4">Management Guidance - FY26 & Beyond</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>FY26 Revenue:</strong> ₹540-550 Cr achievable (20-22% growth)</li>
+                    <li><strong>FY30 Vision:</strong> ₹1,000 Cr target at 35-40% CAGR</li>
+                    <li><strong>EBITDA Margins:</strong> 20-22% sustainable with product mix optimization</li>
+                    <li><strong>Capex:</strong> ₹40-50 Cr annually for capacity & network expansion</li>
+                    <li><strong>Working Capital:</strong> Efficiently managed, focus on cash generation</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Strategic Priorities</h3>
+                <div style="background: #C4B5FD; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p class="text-sm"><strong>1. Network Expansion:</strong> "We are aggressively expanding into Tier 2/3/4 cities where penetration is very low. These markets show 30-40% higher growth than metro cities."</p>
+                </div>
+                <div style="background: #DBEAFE; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p class="text-sm"><strong>2. Product Innovation:</strong> "Launching water-based eco-friendly range to capture green building demand. Also expanding Unico brand for mass-premium segment."</p>
+                </div>
+                <div style="background: #FEF3C7; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p class="text-sm"><strong>3. Italy Partnership Value:</strong> "Extension to 2041 gives us long-term technology edge. We get first access to new Italian formulations, keeping us ahead of competition."</p>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Key Management Quotes</h3>
+                <div style="background: #BBF7D0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p class="text-sm italic">"We aim to become the undisputed leader in premium wood coatings segment in India. Our Italian partnership, product quality, and expanding network position us well for 35-40% CAGR journey to ₹1,000 Cr by FY30."</p>
+                    <p class="text-sm italic mt-2">"Margins are structurally improving due to premiumization. As Sirca brand grows (higher margins), overall EBITDA will trend towards 22%+."</p>
+                </div>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Earnings call notes, management commentary</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 11: Forensic Analysis -->
+        <div id="modal11" class="modal-overlay" onclick="if(event.target===this)closeModal('modal11')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal11')">&times;</span>
+                <h2 class="modal-section-title">🔍 Forensic Analysis</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                    <div style="background: #BBF7D0; padding: 1rem; border-radius: 8px;">
+                        <h3 class="font-bold text-green-700">1. Revenue Quality: 9/10</h3>
+                        <p class="text-sm mt-2">✓ Organic growth (24% YoY)</p>
+                        <p class="text-sm">✓ Diversified customer base</p>
+                        <p class="text-sm">✓ Repeat business from designers</p>
+                        <p class="text-sm">⚠ Small scale (₹500 Cr run-rate)</p>
+                    </div>
+                    <div style="background: #C4B5FD; padding: 1rem; border-radius: 8px;">
+                        <h3 class="font-bold text-purple-700">2. Profitability: 10/10</h3>
+                        <p class="text-sm mt-2">✓ 20.9% EBITDA (best-in-class)</p>
+                        <p class="text-sm">✓ ROE ~27%, ROCE ~24%</p>
+                        <p class="text-sm">✓ Consistent margin expansion</p>
+                        <p class="text-sm">✓ Asset-light, strong cash flow</p>
+                    </div>
+                    <div style="background: #DBEAFE; padding: 1rem; border-radius: 8px;">
+                        <h3 class="font-bold text-blue-700">3. Balance Sheet: 9/10</h3>
+                        <p class="text-sm mt-2">✓ Debt-free (minimal borrowings)</p>
+                        <p class="text-sm">✓ Strong cash generation</p>
+                        <p class="text-sm">✓ Healthy working capital cycle</p>
+                        <p class="text-sm">✓ No major red flags</p>
+                    </div>
+                    <div style="background: #FEF3C7; padding: 1rem; border-radius: 8px;">
+                        <h3 class="font-bold text-yellow-700">4. Execution: 9/10</h3>
+                        <p class="text-sm mt-2">✓ 3 years of 20%+ growth</p>
+                        <p class="text-sm">✓ Italy partnership extended</p>
+                        <p class="text-sm">✓ Network expansion on track</p>
+                        <p class="text-sm">✓ FY30 vision credible</p>
+                    </div>
+                </div>
+                <div style="background: #BBF7D0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p class="font-bold text-green-700">Overall Risk Score: 2/10 (VERY LOW RISK)</p>
+                    <p class="text-sm mt-1">High-quality niche player with exceptional margins, strong growth, clean balance sheet. Main risks: small size, valuation premium, dependence on real estate cycle</p>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Key Strengths</h3>
+                <ul class="list-disc list-inside space-y-1 mt-2 text-sm">
+                    <li>✓ Best-in-class margins (20.9% EBITDA)</li>
+                    <li>✓ Consistent high growth (24% revenue, 36% profit)</li>
+                    <li>✓ Exclusive Italian technology partnership (till 2041)</li>
+                    <li>✓ Debt-free with strong cash flow</li>
+                    <li>✓ Premium positioning in niche segment</li>
+                    <li>✓ Credible management with clear FY30 vision</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Potential Concerns</h3>
+                <ul class="list-disc list-inside space-y-1 mt-2 text-sm">
+                    <li>⚠ Small size (₹2,755 Cr mcap) = lower liquidity</li>
+                    <li>⚠ High valuation (PE 51.9x) = limited margin of safety</li>
+                    <li>⚠ Real estate cyclicality (furniture demand linked to housing)</li>
+                    <li>⚠ Concentration risk (wood coatings ~80% of revenue)</li>
+                    <li>⚠ Promoter holding high (72.4%) = limited float</li>
+                </ul>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Financial analysis, balance sheet review</div></div>
+            </div>
+        </div>
+
+        <!-- MODAL 12: Valuation & Recommendation -->
+        <div id="modal12" class="modal-overlay" onclick="if(event.target===this)closeModal('modal12')">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('modal12')">&times;</span>
+                <h2 class="modal-section-title">💎 Valuation & Recommendation</h2>
+                <div style="background: #BBF7D0; padding: 1rem; border-radius: 8px; border: 2px solid #10b981; margin: 1rem 0;">
+                    <h4 style="font-weight: 700; font-size: 1.2rem; color: #10b981; text-align: center;">RECOMMENDATION: BUY ON DIPS</h4>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <p style="font-size: 0.9rem;"><strong>Current Price:</strong> ₹502 (near ATH)</p>
+                        <p style="font-size: 0.9rem;"><strong>Buy Zone:</strong> ₹450-480 (on corrections)</p>
+                        <p style="font-size: 0.9rem;"><strong>Target (12-18m):</strong> ₹620-650</p>
+                        <p style="font-size: 0.9rem;"><strong>Upside:</strong> 24-30% (from ₹502)</p>
+                        <p style="font-size: 0.9rem;"><strong>Stop Loss:</strong> ₹420 (below support)</p>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Valuation Analysis</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li><strong>Current PE:</strong> 51.9x (premium to sector avg ~45-50x, but justified)</li>
+                    <li><strong>Justified by:</strong> 24% growth, 20.9% margins, niche positioning, FY30 vision</li>
+                    <li><strong>FY26E EPS:</strong> ₹12-13 → Fair PE 50-55x → Fair Value ₹600-650</li>
+                    <li><strong>Growth Premium:</strong> Trading at 2.2x PEG (24% growth) = reasonable</li>
+                    <li><strong>Comparable:</strong> Similar to Indigo Paints (high-growth, premium products)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Investment Thesis</h3>
+                <ul class="list-disc list-inside space-y-2 mt-2 text-sm">
+                    <li>✓ <strong>Best-in-Class Margins:</strong> 20.9% EBITDA (highest in paints sector)</li>
+                    <li>✓ <strong>High Growth Runway:</strong> 35-40% CAGR path to ₹1,000 Cr by FY30</li>
+                    <li>✓ <strong>Italian Moat:</strong> Exclusive tech partnership (till 2041) = competitive edge</li>
+                    <li>✓ <strong>Structural Demand:</strong> Premiumization, low penetration, real estate boom</li>
+                    <li>✓ <strong>Clean Balance Sheet:</strong> Debt-free, strong ROE/ROCE, cash generative</li>
+                    <li>⚠ <strong>Near ATH:</strong> Currently ₹502 vs ₹513 high - wait for dip to ₹450-480</li>
+                    <li>⚠ <strong>Small Cap Risk:</strong> Lower liquidity, promoter concentration (72.4%)</li>
+                </ul>
+                <h3 class="font-bold text-lg mt-4">Scenario Analysis</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
+                    <div style="background: #FCA5A5; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <p class="font-bold text-red-700">Bear Case</p>
+                        <p class="text-lg font-bold mt-1">₹380-400</p>
+                        <p class="text-xs mt-1">Real estate slowdown, margin pressure</p>
+                        <p class="text-xs mt-1"><strong>Downside: -20-24%</strong></p>
+                    </div>
+                    <div style="background: #FEF3C7; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <p class="font-bold text-yellow-700">Base Case</p>
+                        <p class="text-lg font-bold mt-1">₹620-650</p>
+                        <p class="text-xs mt-1">20-25% growth, margins stable 20%+</p>
+                        <p class="text-xs mt-1"><strong>Upside: +24-30%</strong></p>
+                    </div>
+                    <div style="background: #BBF7D0; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <p class="font-bold text-green-700">Bull Case</p>
+                        <p class="text-lg font-bold mt-1">₹750-800</p>
+                        <p class="text-xs mt-1">30%+ growth, FY30 path visible</p>
+                        <p class="text-xs mt-1"><strong>Upside: +50-60%</strong></p>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Investment Strategy</h3>
+                <div style="background: #C4B5FD; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p class="text-sm"><strong>For Existing Investors:</strong> HOLD with trailing stop-loss at ₹420. Stock near ATH so take partial profits if needed, but long-term thesis intact.</p>
+                    <p class="text-sm mt-2"><strong>For New Investors:</strong> WAIT for dip to ₹450-480 range (10% correction). Enter in tranches. Don't chase at current ₹502 levels near ATH.</p>
+                    <p class="text-sm mt-2"><strong>Ideal Entry:</strong> ₹450-480 zone offers better risk-reward. Set alerts for corrections.</p>
+                    <p class="text-sm mt-2"><strong>Time Horizon:</strong> 12-18 months minimum. High-growth small-cap needs patience.</p>
+                </div>
+                <h3 class="font-bold text-lg mt-4">Risk Factors to Monitor</h3>
+                <ul class="list-disc list-inside space-y-1 mt-2 text-sm">
+                    <li>Real estate market health (leading indicator for furniture demand)</li>
+                    <li>Raw material cost inflation (crude derivatives)</li>
+                    <li>Competitive intensity from Asian Paints/Berger entering premium wood</li>
+                    <li>Execution on FY30 vision (quarterly growth trends)</li>
+                    <li>Liquidity (only 27.6% float, can be volatile)</li>
+                </ul>
+                <div class="sources-section"><div style="font-weight: 600; color: #666;">Sources:</div><div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Valuation models, DCF analysis, peer comparison</div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 3rem; padding: 2rem 0; color: #999; font-size: 0.9rem;">
+        <p>&copy; 2025 Sirca Paints India Limited - Investment Research Report</p>
+        <p>Generated by AI-Powered Analysis | For informational purposes only</p>
+        <p>Please verify all information and consult with a qualified financial advisor before investing</p>
+    </footer>
+
+    <script>
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+    </script>
+</body>
+</html>
